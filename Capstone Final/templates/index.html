@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        #video {
+            border: 5px solid #000;
+            width: 100%;
+            max-width: 640px;
+        }
+        input[type="time"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: #4CAF50;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Set Alarm Time</h1>
+        <form action="/set_time" method="post">
+            <label for="time">Set Time (HH:MM):</label><br><br>
+            <input type="time" id="time" name="time" required><br><br>
+            <button type="submit">Set Alarm</button>
+        </form>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <h2>Camera Feed with Counter</h2>
+        <img id="video" src="{{ url_for('video') }}" alt="Video feed">
+
+    </div>
+</body>
+</html>
